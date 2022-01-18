@@ -15,17 +15,16 @@ class App extends React.Component {
 
     FlexWebChat.Manager.create(configuration)
       .then(manager => {
-        FlexWebChat.MainHeader.Content.add(<MinimizeButton key="mimize-chat"  />, { sortOrder: -1, align: "end" });
         FlexWebChat.MainHeader.Content.add(<CloseButton key="close-chat" runtimeDomain={AppConfig.current().runtimeDomain} manager={manager}/>, { sortOrder: -1, align: "end" });
         FlexWebChat.MainHeader.Content.remove("close-button");
-        manager.strings.PredefinedChatMessageBody = "Thank you for contacting HSS secure chat."
+        FlexWebChat.MessagingCanvas.defaultProps.predefinedMessage = false;
+        FlexWebChat.Actions.invokeAction("StartEngagement", { formData: { } })
+        FlexWebChat.Actions.invokeAction("ToggleChatVisibility", { })
         FlexWebChat.Actions.addListener("afterStartEngagement", (payload) => {
-          const { question } = payload.formData;
-          if (!question) return;
           const { channelSid } = manager.store.getState().flex.session;
           manager
             .chatClient.getChannelBySid(channelSid)
-            .then((channel) => channel.sendMessage({}))
+            .then((channel) => channel.sendMessage(`Hello`))
         })
         this.setState({ manager })
       })

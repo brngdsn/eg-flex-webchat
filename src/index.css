@@ -26,3 +26,32 @@ body:after {
   opacity: 0.2;
   background: url("/img/logo.svg");
 }
+
+.Twilio-RootContainer {
+  /* border: 5px solid red; */
+  height: 100%;
+  width: 100%;  
+}
+
+.Twilio-RootContainer-default {
+  /* border: 5px solid green; */
+  height: 100%;
+  width: 100%; 
+}
+
+.Twilio-MainContainer {
+  /* border: 5px solid blue; */
+  min-height: 100%;
+  height: 100%;
+  width: 100% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.Twilio-MainContainer-default {
+  /* border: 5px solid yellow; */
+  height: 100%;
+  width: 100%;
+}
+
